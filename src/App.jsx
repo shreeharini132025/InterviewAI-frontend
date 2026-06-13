@@ -26,7 +26,7 @@ export default function App() {
           <Route path="/interview/session" element={<ProtectedRoute><><Navbar /><InterviewSession /></></ProtectedRoute>} />
           <Route path="/results/:id" element={<ProtectedRoute><><Navbar /><Results /></></ProtectedRoute>} />
           <Route path="/history" element={<ProtectedRoute><><Navbar /><History /></></ProtectedRoute>} />
-          <Route path="/admin" element={<ProtectedRoute requireAdmin={true}><><Navbar /><Admin /></></ProtectedRoute>} />
+          <Route path="/admin" element={<ProtectedRoute requireAdmin={true}><Admin /></ProtectedRoute>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </HashRouter>
