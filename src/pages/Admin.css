@@ -136,18 +136,28 @@
 .admin-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 2rem 1.5rem 3rem;
 }
 
 .admin-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 3rem;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1100px) {
+  .admin-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 900px) {
+  .admin-container {
+    padding: 1.5rem 1rem 2rem;
+  }
+
   .admin-grid {
-    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
 
@@ -473,7 +483,8 @@ textarea:focus, .input-text:focus, select:focus {
   background: var(--bg-secondary);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
-  padding: 0.75rem 0.75rem 0.5rem;
+  padding: 1rem;
+  overflow: hidden;
 }
 
 .users-loading {
@@ -481,11 +492,51 @@ textarea:focus, .input-text:focus, select:focus {
   padding: 0.75rem;
 }
 
+.users-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+}
+
 .users-table {
   width: 100%;
+  min-width: 620px;
   border-collapse: collapse;
 }
 
+.users-table thead th,
+.users-table tbody td {
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .users-table-card {
+    padding: 0.75rem 0.75rem 0.75rem;
+  }
+
+  .users-table {
+    min-width: 580px;
+  }
+
+  .users-table thead th,
+  .users-table tbody td {
+    padding: 0.65rem 0.55rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .users-table {
+    min-width: 560px;
+  }
+
+  .users-table thead th:nth-child(2),
+  .users-table th:nth-child(3),
+  .users-table td:nth-child(2),
+  .users-table td:nth-child(3) {
+    display: none;
+  }
+}
 .users-table thead th {
   text-align: left;
   color: var(--text-muted);
@@ -731,6 +782,8 @@ textarea:focus, .input-text:focus, select:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   padding: 0.75rem 0.75rem;
   color: var(--text-muted);
   font-size: 0.75rem;
@@ -741,6 +794,29 @@ textarea:focus, .input-text:focus, select:focus {
   gap: 0.5rem;
 }
 
+@media (max-width: 720px) {
+  .users-table {
+    min-width: 620px;
+  }
+
+  .users-table thead th,
+  .users-table tbody td {
+    padding: 0.75rem 0.6rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .users-table {
+    min-width: 560px;
+  }
+
+  .users-table thead th:nth-child(2),
+  .users-table th:nth-child(3),
+  .users-table td:nth-child(2),
+  .users-table td:nth-child(3) {
+    display: none;
+  }
+}
 .pager-btn {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.08);

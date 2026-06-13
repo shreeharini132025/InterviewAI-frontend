@@ -563,18 +563,19 @@ export default function Admin() {
                 </div>
               )}
 
-              <table className="users-table">
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th className="num">Interviews</th>
-                    <th className="num">Avg Score</th>
-                    <th className="actions">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
+              <div className="users-table-wrapper">
+                <table className="users-table">
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th className="num">Interviews</th>
+                      <th className="num">Avg Score</th>
+                      <th className="actions">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                   {pageRows.map((u) => {
                     const initials = (u.name || 'U').trim().split(' ').slice(0, 2).map((p) => p[0]?.toUpperCase()).join('');
                     const premium = u.interviews >= 10 && u.avgScore >= 85;
@@ -672,6 +673,7 @@ export default function Admin() {
                   )}
                 </tbody>
               </table>
+            </div>
 
               <div className="users-table-footer">
                 <div className="entries">Showing {showingFrom} to {showingTo} of {usersTotal.toLocaleString()} entries</div>
