@@ -12,7 +12,7 @@ export default function Admin() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const tabClass = (tab) => (activeTab === tab ? 'tab active' : 'tab');
+  const tabClass = (tab) => (activeTab === tab ? 'nav-link active' : 'nav-link');
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
