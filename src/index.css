@@ -418,6 +418,8 @@ label.form-label {
 }
 .mobile-menu.active {
   display: flex;
+  height: calc(100vh - 70px);
+  
 }
 .mobile-menu-header {
   display: flex;
