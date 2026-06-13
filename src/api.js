@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || ' https://interviewai-backend-cp4o.onrender.com';
+const API_BASE_URL = (import.meta.env.VITE_API_URL)
+  .trim()
+  .replace(/\/$/, '');
 
 const API = axios.create({
   baseURL: API_BASE_URL,
