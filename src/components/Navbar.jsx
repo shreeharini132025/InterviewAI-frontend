@@ -63,6 +63,12 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="mobile-menu active">
+          <div className="mobile-menu-header">
+            <div className="mobile-menu-title">Navigation</div>
+            <button className="mobile-menu-close" onClick={closeMobileMenu} aria-label="Close menu">
+              ✕
+            </button>
+          </div>
           {user && (
             <>
               <Link to="/dashboard" className={isActive('/dashboard')} onClick={closeMobileMenu}>
@@ -74,11 +80,10 @@ export default function Navbar() {
               <Link to="/history" className={isActive('/history')} onClick={closeMobileMenu}>
                 History
               </Link>
-              {/* Admin link if user is admin */}
               <Link to="/admin" className={isActive('/admin')} onClick={closeMobileMenu}>
                 Admin
               </Link>
-              <div style={{ borderTop: '1px solid var(--border)', marginTop: '12px', paddingTop: '12px' }}>
+              <div style={{ borderTop: '1px solid var(--border)', marginTop: '16px', paddingTop: '16px' }}>
                 <button onClick={handleLogout} className="btn btn-outline" style={{ width: '100%' }}>
                   Sign Out
                 </button>

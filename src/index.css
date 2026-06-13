@@ -408,24 +408,48 @@ label.form-label {
 .mobile-menu {
   display: none;
   position: fixed;
-  top: 70px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(8, 11, 20, 0.97);
+  inset: 70px 0 0 0;
+  background: rgba(8, 11, 20, 0.98);
   backdrop-filter: blur(20px);
   z-index: 1002;
   flex-direction: column;
-  padding: 20px;
+  padding: 16px;
   overflow-y: auto;
 }
 .mobile-menu.active {
   display: flex;
 }
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.mobile-menu-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.mobile-menu-close {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.mobile-menu-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
 .mobile-menu .nav-link,
 .mobile-menu .btn {
   width: 100%;
-  margin: 8px 0;
+  margin: 10px 0;
 }
 .mobile-menu .nav-link {
   padding: 14px 16px;
