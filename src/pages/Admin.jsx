@@ -10,8 +10,11 @@ export default function Admin() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('questions');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const tabClass = (tab) => (activeTab === tab ? 'nav-link active' : 'nav-link');
+
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -237,12 +240,24 @@ export default function Admin() {
           </Link>
 
           <div className="navbar-links">
-            <button className={tabClass('questions')} onClick={() => setActiveTab('questions')}>Questions</button>
-            <button className={tabClass('users')} onClick={() => setActiveTab('users')}>Users</button>
-            <button className={tabClass('settings')} onClick={() => setActiveTab('settings')}>Settings</button>
+            <button className={tabClass('questions')} onClick={() => { setActiveTab('questions'); closeMobileMenu(); }}>Questions</button>
+            <button className={tabClass('users')} onClick={() => { setActiveTab('users'); closeMobileMenu(); }}>Users</button>
+            <button className={tabClass('settings')} onClick={() => { setActiveTab('settings'); closeMobileMenu(); }}>Settings</button>
           </div>
 
           <div className="navbar-actions admin-profile-actions" style={{ position: 'relative' }}>
+            <button
+              className={`hamburger-btn ${mobileMenuOpen ? 'active' : ''}`}
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle admin menu"
+              aria-expanded={mobileMenuOpen}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+
             <div
               className="avatar"
               title={user?.name || 'Admin'}
@@ -268,6 +283,38 @@ export default function Admin() {
               </div>
             )}
           </div>
+
+          {mobileMenuOpen && (
+            <div className="mobile-menu active">
+              <div className="mobile-menu-header">
+                <div className="mobile-menu-title">Navigation</div>
+                <button className="mobile-menu-close" onClick={closeMobileMenu} aria-label="Close menu">
+                  ✕
+                </button>
+              </div>
+              <button className={tabClass('questions')} onClick={() => { setActiveTab('questions'); closeMobileMenu(); }}>
+                Questions
+              </button>
+              <button className={tabClass('users')} onClick={() => { setActiveTab('users'); closeMobileMenu(); }}>
+                Users
+              </button>
+              <button className={tabClass('settings')} onClick={() => { setActiveTab('settings'); closeMobileMenu(); }}>
+                Settings
+              </button>
+              <div style={{ borderTop: '1px solid var(--border)', marginTop: '16px', paddingTop: '16px' }}>
+                <button
+                  className="admin-profile-signout"
+                  onClick={() => {
+                    authLogout();
+                    navigate('/login');
+                    closeMobileMenu();
+                  }}
+                >
+                  Sign Out
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
