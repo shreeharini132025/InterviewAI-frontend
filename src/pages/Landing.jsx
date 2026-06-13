@@ -15,7 +15,7 @@ export default function Landing() {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        padding: '100px 24px 60px',
+        padding: 'clamp(80px, 12vw, 120px) 16px 60px',
         position: 'relative'
       }}>
         {/* Animated orbs */}

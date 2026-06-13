@@ -380,28 +380,38 @@ label.form-label {
 .hamburger-btn {
   display: none;
   flex-direction: column;
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
-  gap: 5px;
-  padding: 8px;
+  gap: 6px;
+  padding: 10px 8px;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+.hamburger-btn:hover, .hamburger-btn:focus {
+  background: rgba(99, 102, 241, 0.1);
+  outline: none;
 }
 .hamburger-btn span {
   display: block;
-  width: 24px;
-  height: 2px;
+  width: 28px;
+  height: 3px;
   background: var(--text-primary);
   border-radius: 2px;
   transition: var(--transition);
 }
 .hamburger-btn.active span:nth-child(1) {
-  transform: rotate(45deg) translate(10px, 10px);
+  transform: rotate(45deg) translate(11px, 11px);
 }
 .hamburger-btn.active span:nth-child(2) {
   opacity: 0;
 }
 .hamburger-btn.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(8px, -8px);
+  transform: rotate(-45deg) translate(9px, -9px);
 }
 
 /* Mobile Menu Overlay */
@@ -478,10 +488,21 @@ label.form-label {
 @media (max-width: 640px) {
   .navbar {
     padding: 0 12px;
+    height: 64px;
+  }
+  
+  .navbar-inner {
+    padding: 0 4px;
   }
   
   .navbar-logo span {
     display: none;
+  }
+  
+  .navbar-logo .logo-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
   }
   
   .navbar-links {
@@ -503,6 +524,7 @@ label.form-label {
 
   .mobile-menu {
     display: none;
+    top: 64px;
   }
 }
 
