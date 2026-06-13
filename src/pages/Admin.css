@@ -4,13 +4,7 @@
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: inherit;
-  padding-top: 70px;
-}
-
-.admin-page-wrapper .navbar-logo .logo-icon img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
+  padding-top: 2rem;
 }
 
 .admin-profile-menu {
@@ -62,9 +56,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--bg-primary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .admin-logo {
@@ -136,13 +132,13 @@
 .admin-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 2rem 1.5rem 3rem;
 }
 
 .admin-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 2rem;
 }
 
 @media (max-width: 900px) {
