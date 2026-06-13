@@ -412,9 +412,9 @@ label.form-label {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(8, 11, 20, 0.95);
+  background: rgba(8, 11, 20, 0.97);
   backdrop-filter: blur(20px);
-  z-index: 999;
+  z-index: 1002;
   flex-direction: column;
   padding: 20px;
   overflow-y: auto;
@@ -422,19 +422,26 @@ label.form-label {
 .mobile-menu.active {
   display: flex;
 }
+.mobile-menu .nav-link,
+.mobile-menu .btn {
+  width: 100%;
+  margin: 8px 0;
+}
 .mobile-menu .nav-link {
-  padding: 12px 16px;
+  padding: 14px 16px;
   font-size: 1rem;
   border-bottom: 1px solid var(--border);
   border-radius: 0;
-  width: 100%;
   text-align: left;
 }
 .mobile-menu .btn {
-  margin: 8px 0;
-  width: 100%;
   justify-content: center;
+  padding: 12px 0;
 }
+.mobile-menu .btn + .btn {
+  margin-top: 12px;
+}
+
 
 /* ─── Responsive Navbar ─── */
 @media (max-width: 640px) {
