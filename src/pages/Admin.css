@@ -527,7 +527,7 @@ textarea:focus, .input-text:focus, select:focus {
 
 @media (max-width: 560px) {
   .users-table {
-    min-width: 560px;
+    min-width: 100%;
   }
 
   .users-table thead th:nth-child(2),
@@ -535,6 +535,16 @@ textarea:focus, .input-text:focus, select:focus {
   .users-table td:nth-child(2),
   .users-table td:nth-child(3) {
     display: none;
+  }
+
+  .actions-cell {
+    gap: 8px;
+  }
+
+  .actions-menu {
+    right: 50%;
+    transform: translateX(50%);
+    min-width: 160px;
   }
 }
 .users-table thead th {
@@ -562,23 +572,27 @@ textarea:focus, .input-text:focus, select:focus {
 
 .actions-cell {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   position: relative;
+  z-index: 1;
 }
 
 .actions-menu {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 8px);
   right: 0;
-  min-width: 160px;
+  min-width: 180px;
+  max-width: min(240px, 90vw);
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   padding: 8px;
   z-index: 1002;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .actions-menu-item {
@@ -587,10 +601,10 @@ textarea:focus, .input-text:focus, select:focus {
   background: transparent;
   border: none;
   color: var(--text-secondary);
-  padding: 10px 10px;
+  padding: 10px 12px;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
