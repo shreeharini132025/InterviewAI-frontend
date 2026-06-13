@@ -1,22 +1,27 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useState } from 'react';
 
 export default function Navbar() {
   const { user, authLogout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLogout = () => {
     authLogout();
     navigate('/login');
+    setMobileMenuOpen(false);
   };
 
   const isActive = (path) => location.pathname === path ? 'nav-link active' : 'nav-link';
 
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-        <Link to="/" className="navbar-logo">
+        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
           <div className="logo-icon">🧠</div>
           <span>InterviewAI</span>
         </Link>
@@ -41,7 +46,57 @@ export default function Navbar() {
             </>
           )}
         </div>
+
+        {/* Hamburger Menu Button */}
+        <button 
+          className={`hamburger-btn ${mobileMenuOpen ? 'active' : ''}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="mobile-menu active">
+          {user && (
+            <>
+              <Link to="/dashboard" className={isActive('/dashboard')} onClick={closeMobileMenu}>
+                Dashboard
+              </Link>
+              <Link to="/interview" className={isActive('/interview')} onClick={closeMobileMenu}>
+                Practice
+              </Link>
+              <Link to="/history" className={isActive('/history')} onClick={closeMobileMenu}>
+                History
+              </Link>
+              {/* Admin link if user is admin */}
+              <Link to="/admin" className={isActive('/admin')} onClick={closeMobileMenu}>
+                Admin
+              </Link>
+              <div style={{ borderTop: '1px solid var(--border)', marginTop: '12px', paddingTop: '12px' }}>
+                <button onClick={handleLogout} className="btn btn-outline" style={{ width: '100%' }}>
+                  Sign Out
+                </button>
+              </div>
+            </>
+          )}
+          {!user && (
+            <>
+              <Link to="/login" className="btn btn-outline" onClick={closeMobileMenu} style={{ width: '100%' }}>
+                Login
+              </Link>
+              <Link to="/register" className="btn btn-primary" onClick={closeMobileMenu} style={{ width: '100%' }}>
+                Get Started
+              </Link>
+            </>
+          )}
+        </div>
+      )}
     </nav>
   );
 }
